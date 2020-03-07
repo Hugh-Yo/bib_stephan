@@ -37,10 +37,11 @@ const parsePage = data =>{
   const nbincrements = Math.floor(nbrestau/restauppage) +1;
   const links = [];
   const names = [];
+  const numbers = [];
 
   $('div.js-restaurant__list_item > a').each((i,element)=>{
     const link = $(element).attr('href');//we select the 'href' attribute of the element
-    const name = $(element).attr('aria-label').split('Open ')[1];//same thing with 'aria-label', from which is then extracted the Name
+    const name = $(element).attr('aria-label').split('Open ')[1].toLowerCase();//same thing with 'aria-label', from which is then extracted the Name
     links.push(link);
     names.push(name);
   });
@@ -54,7 +55,7 @@ const parsePage = data =>{
  * @return {Object} restaurant
  */
 
-//Function used to determine how many pages there are
+/*Function used to determine how many pages there are
 module.exports.nbincrements = async url => {
   const response = await axios(url);
   const {data, status} = response;
@@ -65,7 +66,8 @@ module.exports.nbincrements = async url => {
   console.error(status);
   return(res);
 }
- 
+ */
+
 module.exports.scrapePage = async url => {
   const response = await axios(url);
   const {data, status} = response;
